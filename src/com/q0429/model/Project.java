@@ -5,7 +5,14 @@ public class Project {
 	private String name;
 	private String deadline;
 	private String detail;
+	private String owner;
 	
+	public String getOwner() {
+		return owner;
+	}
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
 	public int getPj_num() {
 		return pj_num;
 	}
