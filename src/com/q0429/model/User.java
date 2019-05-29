@@ -1,9 +1,9 @@
-package com.model;
+package com.q0429.model;
 
 public class User {
 	private String id;
 	private String pw;
-	private String spec;
+	private String email;
 	private String tel;
 	
 	public String getId() {
@@ -18,11 +18,11 @@ public class User {
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-	public String getSpec() {
-		return spec;
+	public String getEmail() {
+		return email;
 	}
-	public void setSpec(String spec) {
-		this.spec = spec;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getTel() {
 		return tel;
