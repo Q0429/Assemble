@@ -10,26 +10,25 @@ import com.q0429.command.Command;
 import com.q0429.dao.User_DAO;
 import com.q0429.model.User;
 
-public class Insert_User implements Command {
+public class Double_check implements Command {
 
 	@Override
 	public boolean execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		User user = new User();		
 		User_DAO dao = new User_DAO();
+		User chk_user = new User();
 		
-		user.setId(request.getParameter("id"));
-		user.setPw(request.getParameter("pw"));
-		user.setName(request.getParameter("name"));
-		user.setEmail(request.getParameter("email"));
-		user.setTel(request.getParameter("tel"));
+		chk_user.setId(request.getParameter("id"));
+		chk_user.setPw(request.getParameter("pw"));
+		chk_user.setName(request.getParameter("name"));
+		chk_user.setEmail(request.getParameter("email"));
+		chk_user.setTel(request.getParameter("tel"));
+		request.setAttribute("user", chk_user);
 		
-		if(!dao.insert_User(user)) {
+		if(dao.double_check(request.getParameter("id"))) {
 			return false;
-		}
-		//test
-		request.setAttribute("user", user);
+		}		
 		return true;
 	}
-
+	
 }

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" isErrorPage="true"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8" errorPage="assemble_error.jsp" %>
 <!DOCTYPE HTML>
 <!--
 	Forty by HTML5 UP
@@ -31,27 +30,43 @@
 				<span class="image"> <img src="images/pic07.jpg" alt="" />
 				</span>
 				<header class="major">
-					<h1>ERROR</h1>
+					<h1>만든 사람 소개</h1>
 				</header>
 			</div>
 		</section>
 
 		<!-- Main -->
 		<div id="main">
-
-			<!-- One -->
-			<section id="one">
+			<!-- Contact -->
+			<section id="contact">
 				<div class="inner">
-					<header class="major">
-						<h2>에러 발생</h2>
-					</header>
-					<p>
-						처리중에 에러가 발생 했습니다.<br> 관리자에게 문의해주세요.<br> <br>
-						<%=exception%>
-					</p>
+					<section class="">
+						<section>
+							<div class="contact-method">
+								<span class="icon alt fa-id-card"></span>
+								<h3>이형규</h3>
+								<span>컴퓨터공학전공<br /> 27세<br /> 백수
+								</span>
+							</div>
+						</section>
+						<section>
+							<div class="contact-method">
+								<span class="icon alt fa-envelope"></span>
+								<h3>Email</h3>
+								<a href="#">belathne0429@gmail.com</a>
+							</div>
+						</section>
+						<section>
+							<div class="contact-method">
+								<span class="icon alt fa-phone"></span>
+								<h3>Phone</h3>
+								<span>(010) 2937-6242</span>
+							</div>
+						</section>
+
+					</section>
 				</div>
 			</section>
-
 		</div>
 		<jsp:include page="footer.jsp"></jsp:include>
 </body>

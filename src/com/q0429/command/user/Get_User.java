@@ -13,27 +13,20 @@ import com.q0429.model.User;
 public class Get_User implements Command {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	public boolean execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		User_DAO dao = new User_DAO();
 		User user = new User_DAO().get_user(request.getParameter("id"));		
 		response.setContentType("text/html; charset=UTF-8"); 
-		
-		if(user.getPw().equals(request.getParameter("pw"))) {
-			dao.get_user(request.getParameter("id"));
+		System.out.println(request.getParameter("pw"));
+		if(user.getPw().equals(request.getParameter("pw"))) {			
 			request.setAttribute("user", user);
+			return true;
 		}
-		else {
-			PrintWriter out;
-			try {
-				out = response.getWriter();
-				out.println("<script>alert('비밀번호가 틀렸습니다.!!');history.go(-1);</script>");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("화면 출력 오류");
-			}
-		}
+		else {			
+			return false;			
+		}		
+		
 	}
 
 }

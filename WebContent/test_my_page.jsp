@@ -9,8 +9,7 @@
 </head>
 
 <body>
-	<div align="center">
-		
+	<div align="center">	
 		
 			ID : <%=user.getId()%><br>
 			PW : <%=user.getPw()%><br>

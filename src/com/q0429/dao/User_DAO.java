@@ -35,6 +35,28 @@ public class User_DAO extends DAO {
 		return true;
 	}
 	
+	public boolean double_check(String user_id) {
+		String sql = "SELECT * FROM users WHERE id=" + user_id;
+		boolean is_double = false;
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			ResultSet rs = pstm.executeQuery();
+			
+			is_double = rs.next();
+			
+			rs.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("유저 체크 오류");
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		
+		return is_double;
+	}
+	
 	public boolean update_User(User user) {		
 		String sql = "UPDATE users SET pw=?, name=?, email=?, tel=? WHERE id=?";
 		
@@ -61,7 +83,7 @@ public class User_DAO extends DAO {
 	}
 	
 	public boolean delete_User(String user_id) {		
-		String sql = "DELETE FROM users WHERE " + user_id;
+		String sql = "DELETE FROM users WHERE id=" + user_id;
 		
 		try {			
 			pstm = con.prepareStatement(sql);
@@ -80,11 +102,12 @@ public class User_DAO extends DAO {
 	}
 	
 	public User get_user(String user_id) {
-		String sql = "SELECT * FROM users WHERE user_id=" + user_id;
+		String sql = "SELECT * FROM users WHERE id=?";
 		User user = new User();
 		
 		try {
 			pstm = con.prepareStatement(sql);
+			pstm.setString(1, user_id);
 			ResultSet rs = pstm.executeQuery();
 			
 			rs.next();

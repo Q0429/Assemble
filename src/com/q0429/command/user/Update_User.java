@@ -10,7 +10,7 @@ import com.q0429.model.User;
 public class Update_User implements Command {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
+	public boolean execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		User user = new User();		
 		User_DAO dao = new User_DAO();
@@ -21,7 +21,9 @@ public class Update_User implements Command {
 		user.setEmail(request.getParameter("email"));
 		user.setTel(request.getParameter("tel"));
 
-		dao.update_User(user);
+		dao.update_User(user);	
+		
+		return true;
 	}
 
 }
