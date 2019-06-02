@@ -17,7 +17,7 @@ import com.q0429.dao.User_DAO;
 import com.q0429.model.User;
 
 
-@WebServlet("/User_controller")
+@WebServlet("/user_controller")
 public class User_controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -28,8 +28,9 @@ public class User_controller extends HttpServlet {
 	}
 
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=UTF-8");
 		Command command = null;
 		String viewPage = null;
 		HttpSession session = request.getSession();
@@ -41,18 +42,19 @@ public class User_controller extends HttpServlet {
 		if(action.equals("insert")){ // 가입
 			command = new Insert_User();
 			if(command.execute(request, response)){
-				viewPage = "sign_in.jsp";				
+				viewPage = "user/sign_in.jsp";				
 			} else {
-				viewPage = "error/sign_up_error.jsp";		
+				throw new ServletException("가입에 실패했습니다");
+//				viewPage = "error/sign_up_error.jsp";		
 			}			
 		} else if(action.equals("sign_up")) {
 			command = new Sign_up_User();
 			command.execute(request, response);
-			viewPage = "sign_up.jsp";			
+			viewPage = "user/sign_up.jsp";			
 		} else if(action.equals("double_check")) {
 			command = new Double_check();
 			if(command.execute(request, response)){
-				viewPage = "sign_up.jsp";
+				viewPage = "user/sign_up.jsp";
 				//test
 				viewPage = "test_sign_up.jsp";
 			} else {

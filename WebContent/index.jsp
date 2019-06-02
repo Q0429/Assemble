@@ -30,15 +30,21 @@
 				<header class="major">
 					<h1>
 						<%
+							boolean is_user = false;
 							String now_user;
 							now_user = (String) session.getAttribute("sign_in_user");
 							if (now_user == null) {
-								now_user = "";
-							} else {
-								now_user += "님 ";
-							}							
 						%>
-						<%=now_user%>어서오세요.
+						어서오세요.
+						<%
+							} else {
+								is_user = true;
+						%>
+						<%=now_user + "님 "%>어서오세요.
+						<%
+							}
+						%>
+
 					</h1>
 				</header>
 				<div class="content">
@@ -60,7 +66,7 @@
 					</span>
 					<header class="major">
 						<h3>
-							<a href="addrbook_form.jsp" class="link"> 프로젝트 등록</a>
+							<a href="project/create_pj.jsp" class="link"> 프로젝트 생성</a>
 						</h3>
 					</header>
 				</article>
@@ -69,8 +75,7 @@
 					</span>
 					<header class="major">
 						<h3>
-							<a href="addrbook_control.jsp?action=list" class="link"> 프로젝트
-								참가 </a>
+							<a href="link_controller?action=list" class="link"> 프로젝트 참가 </a>
 						</h3>
 					</header>
 				</article>
@@ -79,8 +84,18 @@
 					</span>
 					<header class="major">
 						<h3>
-							<a href="addrbook_control.jsp?action=edit_list" class="link">
-								프로젝트 조회 </a>
+							<%
+								if (is_user) {
+							%>
+							<a href="user_controller?action=my_page?id=<%=now_user%>"
+								class="link"> 프로젝트 관리 </a>
+							<%
+								} else {
+							%>
+							<a href="user/sign_in.jsp" class="link"> 프로젝트 관리 </a>
+							<%
+								}
+							%>
 						</h3>
 					</header>
 				</article>
@@ -94,9 +109,9 @@
 					</header>
 				</article>
 			</section>
-
-
 		</div>
+
 		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

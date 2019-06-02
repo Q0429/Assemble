@@ -22,7 +22,7 @@
 	<!-- Wrapper -->
 	<div id="wrapper">
 
-		<jsp:include page="header.jsp"></jsp:include>
+		<jsp:include page="/header.jsp"></jsp:include>
 
 		<!-- Banner -->
 		<!-- Note: The "styleN" class below should match that of the header element. -->
@@ -53,6 +53,6 @@
 			</section>
 
 		</div>
-		<jsp:include page="footer.jsp"></jsp:include>
+		<jsp:include page="/footer.jsp"></jsp:include>
 </body>
 </html>

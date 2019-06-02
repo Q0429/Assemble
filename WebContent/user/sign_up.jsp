@@ -1,4 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8" errorPage="assemble_error.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" errorPage="assemble_error.jsp"%>
+<jsp:useBean id="user" class="com.q0429.model.User" scope="request"></jsp:useBean>
 <!DOCTYPE HTML>
 <!--
 	Forty by HTML5 UP
@@ -21,9 +23,9 @@
 	<!-- Wrapper -->
 	<div id="wrapper">
 
-		<jsp:include page="header.jsp"></jsp:include>
+		<jsp:include page="/header.jsp"></jsp:include>
 
-<!-- Main -->
+		<!-- Main -->
 		<div id="main" class="alt">
 
 			<!-- One -->
@@ -45,36 +47,38 @@
 					<input type=hidden name="action" value="insert">
 					<div class="fields">
 						<div class="field">
-							<label for="name">ID</label> <input type="text" name="id"
-								id="name" />
+							<label for="name">ID</label>
+							 <input type="text" name="id" id="name" value="<%=user.getId()%>"/>
+							 <input type="button" onclick="double_chk()" value="중복 체크" />
 						</div>
 						<div class="field">
 							<label for="name">PW</label> <input type="password" name="pw"
-								id="name" />
+								id="name" value="<%=user.getPw()%>" />
 						</div>
 						<div class="field">
 							<label for="name">NAME</label> <input type="text" name="name"
-								id="name" />
+								id="name" value="<%=user.getName()%>" />
 						</div>
 						<div class="field">
 							<label for="name">EMAIL</label> <input type="email" name="email"
-								id="name" />
+								id="name" value="<%=user.getEmail()%>" />
 						</div>
 						<div class="field">
 							<label for="name">TEL</label> <input type="tel" name="tel"
-								id="name" />
+								id="name" value="<%=user.getTel()%>" />
 						</div>
 					</div>
 					<ul class="actions">
 						<li><input type="submit" value="SIGN UP" class="primary" /></li>
-						<li><input type="button" onClick="location.href='index.jsp'" value="BACK" /></li>
+						<li><input type="button" onClick="location.href='index.jsp'"
+							value="BACK" /></li>
 					</ul>
 				</form>
 
 
 			</div>
 		</section>
-		
-		<jsp:include page="footer.jsp"></jsp:include>
+
+		<jsp:include page="/footer.jsp"></jsp:include>
 </body>
 </html>

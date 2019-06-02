@@ -21,7 +21,7 @@
 	<!-- Wrapper -->
 	<div id="wrapper">
 
-		<jsp:include page="header.jsp"></jsp:include>
+		<jsp:include page="/header.jsp"></jsp:include>
 
 <!-- Main -->
 		<div id="main" class="alt">
@@ -63,6 +63,6 @@
 			</div>
 		</section>
 		
-		<jsp:include page="footer.jsp"></jsp:include>
+		<jsp:include page="/footer.jsp"></jsp:include>
 </body>
 </html>

@@ -13,14 +13,15 @@
 				if (sign_in_user == null) {
 			%>
 			<li><input type="button" value="SIGN UP"
-				onclick="location.href='User_controller?action=sign_up'" /></li>
+				onclick="location.href='user_controller?action=sign_up'" /></li>
 			<li><input type="button" value="SIGN IN" class="primary"
-				onClick="location.href='sign_in.jsp'" /></li>
+				onClick="location.href='user/sign_in.jsp'" /></li>
 			<%
 				} else {
 			%>
+				<li><a href="user_controller?action=my_page"><%=sign_in_user+"님"%></a></li>
 				<li><input type="button" value="SIGN OUT"
-				onclick="location.href='User_controller?action=sign_out'" /></li>
+				onclick="location.href='user_controller?action=sign_out'" /></li>
 			<%
 			}
 			%>
