@@ -21,7 +21,7 @@
 	<!-- Wrapper -->
 	<div id="wrapper">
 
-		<jsp:include page="/header.jsp"></jsp:include>
+		<jsp:include page="header.jsp"></jsp:include>
 
 <!-- Main -->
 		<div id="main" class="alt">
@@ -30,7 +30,7 @@
 			<section id="one">
 				<div class="inner">
 					<header class="major">
-						<h1>SIGN IN</h1>
+						<h1>프로젝트 생성</h1>
 					</header>
 				</div>
 			</section>
@@ -41,20 +41,25 @@
 		<section id="contact">
 			<div class="inner">
 
-				<form method="post" action="User_controller">
-					<input type=hidden name="action" value="sign_in">
+				<form method="post" action="Project_controller">
+					<input type=hidden name="action" value="create_pj">
+					<input type="hidden" name="owner" value="<%=session.getAttribute("sign_in_user")%>"> 
 					<div class="fields">
 						<div class="field">
-							<label for="name">ID</label> <input type="text" name="id"
+							<label for="name">이름</label> <input type="text" name="name"
 								id="name" />
 						</div>
 						<div class="field">
-							<label for="name">PW</label> <input type="text" name="pw"
+							<label for="name">DEADLINE</label> <input type="date" name="deadline"
 								id="name" />
+						</div>
+						<div class="field">
+							<label for="name">DETAIL</label> 
+							<textarea rows="8" cols="40" name="detail" maxlength="50"></textarea>
 						</div>
 					</div>
 					<ul class="actions">
-						<li><input type="submit" value="SIGN IN" class="primary" /></li>
+						<li><input type="submit" value="CREATE" class="primary" /></li>
 						<li><input type="button" onClick="location.href='index.jsp'" value="BACK" /></li>
 					</ul>
 				</form>
@@ -63,6 +68,6 @@
 			</div>
 		</section>
 		
-		<jsp:include page="/footer.jsp"></jsp:include>
+		<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

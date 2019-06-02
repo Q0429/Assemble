@@ -66,7 +66,18 @@
 					</span>
 					<header class="major">
 						<h3>
-							<a href="project/create_pj.jsp" class="link"> 프로젝트 생성</a>
+							<%
+								if (is_user) {
+							%>
+							<a href="create_pj.jsp"
+								class="link"> 프로젝트 생성 </a>
+							<%
+								} else {
+							%>
+							<a href="sign_in.jsp" class="link"> 프로젝트 생성 </a>
+							<%
+								}
+							%>
 						</h3>
 					</header>
 				</article>
@@ -75,7 +86,7 @@
 					</span>
 					<header class="major">
 						<h3>
-							<a href="link_controller?action=list" class="link"> 프로젝트 참가 </a>
+							<a href="Link_controller?action=list_null" class="link"> 프로젝트 참가 </a>
 						</h3>
 					</header>
 				</article>
@@ -87,12 +98,12 @@
 							<%
 								if (is_user) {
 							%>
-							<a href="user_controller?action=my_page?id=<%=now_user%>"
+							<a href="User_controller?action=my_info&id=<%=now_user%>"
 								class="link"> 프로젝트 관리 </a>
 							<%
 								} else {
 							%>
-							<a href="user/sign_in.jsp" class="link"> 프로젝트 관리 </a>
+							<a href="sign_in.jsp" class="link"> 프로젝트 관리 </a>
 							<%
 								}
 							%>

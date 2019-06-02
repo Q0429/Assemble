@@ -100,11 +100,12 @@ public class Link_DAO extends DAO{
 	}
 	
 	public Link get_Ln(int ln_num) {
-		String sql = "SELECT * FROM link WHERE link_num=" + ln_num;
+		String sql = "SELECT * FROM link WHERE link_num=?";
 		Link ln = new Link();
 		
 		try {
 			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, ln_num);
 			ResultSet rs = pstm.executeQuery();
 			
 			rs.next();
@@ -125,11 +126,12 @@ public class Link_DAO extends DAO{
 	}
 	
 	public ArrayList<Link> get_Ln_User(String id) {
-		String sql = "SELECT * FROM link WHERE id=" + id;
+		String sql = "SELECT * FROM link WHERE id=?";
 		ArrayList<Link> datas = new ArrayList<Link>();
 		
 		try {
 			pstm = con.prepareStatement(sql);
+			pstm.setString(1, id);
 			ResultSet rs = pstm.executeQuery();
 			
 			while(rs.next()) {

@@ -23,7 +23,7 @@
 	<!-- Wrapper -->
 	<div id="wrapper">
 
-		<jsp:include page="/header.jsp"></jsp:include>
+		<jsp:include page="header.jsp"></jsp:include>
 
 		<!-- Main -->
 		<div id="main" class="alt">
@@ -70,7 +70,7 @@
 					</div>
 					<ul class="actions">
 						<li><input type="submit" value="SIGN UP" class="primary" /></li>
-						<li><input type="button" onClick="location.href='index.jsp'"
+						<li><input type="button" onClick="location.href='../index.jsp'"
 							value="BACK" /></li>
 					</ul>
 				</form>
@@ -79,6 +79,6 @@
 			</div>
 		</section>
 
-		<jsp:include page="/footer.jsp"></jsp:include>
+		<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

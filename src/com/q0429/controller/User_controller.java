@@ -17,7 +17,7 @@ import com.q0429.dao.User_DAO;
 import com.q0429.model.User;
 
 
-@WebServlet("/user_controller")
+@WebServlet("/User_controller")
 public class User_controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -42,23 +42,24 @@ public class User_controller extends HttpServlet {
 		if(action.equals("insert")){ // 가입
 			command = new Insert_User();
 			if(command.execute(request, response)){
-				viewPage = "user/sign_in.jsp";				
+				viewPage = "sign_in.jsp";				
 			} else {
-				throw new ServletException("가입에 실패했습니다");
-//				viewPage = "error/sign_up_error.jsp";		
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('가입실패!!');history.go(-1);</script>");
+				viewPage = "error/sign_up_error.jsp";		
 			}			
 		} else if(action.equals("sign_up")) {
 			command = new Sign_up_User();
 			command.execute(request, response);
-			viewPage = "user/sign_up.jsp";			
+			viewPage = "sign_up.jsp";			
 		} else if(action.equals("double_check")) {
 			command = new Double_check();
 			if(command.execute(request, response)){
-				viewPage = "user/sign_up.jsp";
+				viewPage = "sign_up.jsp";
 				//test
 				viewPage = "test_sign_up.jsp";
 			} else {
-				viewPage = "error/double_error.jsp";		
+				throw new ServletException("중복된 아이디입니다.");		
 			}			
 		} else if(action.equals("modify")) { // 변경
 			command = new Get_User();
@@ -77,14 +78,17 @@ public class User_controller extends HttpServlet {
 			}
 		} else if(action.equals("sign_in")) { //로그인
 			command = new Get_User();
-			if(command.execute(request, response)) {
-				System.out.println(request.getParameter("id"));
-				session.setAttribute("sign_in_user", request.getParameter("id"));
-				System.out.println("세션 입력 확인" + session.getAttribute("sign_in_user"));
+			if(command.execute(request, response)) {				
+				session.setAttribute("sign_in_user", request.getParameter("id"));				
 				viewPage = "index.jsp";
 			} else {
-				viewPage = "error/login_error.jsp";			
+				throw new ServletException("로그인에 실패했습니다");	
 			}
+		} else if(action.equals("my_info")) {
+			System.out.println("정보 가져오기 시작 : " + request.getParameter("id"));
+			command = new Info_User();
+			command.execute(request, response);
+			viewPage = "my_info.jsp";
 		} else if(action.equals("sign_out")) {
 			session.invalidate();
 			viewPage = "index.jsp";

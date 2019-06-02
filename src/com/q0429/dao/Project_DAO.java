@@ -2,6 +2,9 @@ package com.q0429.dao;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+
+import javax.swing.text.DefaultEditorKit.BeepAction;
+
 import com.q0429.model.Project;
 
 public class Project_DAO extends DAO{
@@ -11,17 +14,16 @@ public class Project_DAO extends DAO{
 	}
 	
 	public boolean insert_Pj(Project pj) {		
-		String sql = "INSERT INTO project(pj_num, name, deadline, detail, owner) VALUES (PN_SEQ.NEXTVAL, ?, ?, ?, ?)";
-		
+		String sql = "INSERT INTO project(pj_num, name, deadline, detail, owner) VALUES (PJ_SEQ.NEXTVAL, ?, ?, ?, ?)";
 		try {			
 			pstm = con.prepareStatement(sql);
 			
 			pstm.setString(1, pj.getName());
 			pstm.setString(2, pj.getDeadline());
 			pstm.setString(3, pj.getDetail());
-			pstm.setString(4, pj.getOwner());
+			pstm.setString(4, pj.getOwner());			
+			pstm.executeUpdate();
 			
-			pstm.executeUpdate();			
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("프로젝트 생성 오류");
@@ -77,11 +79,12 @@ public class Project_DAO extends DAO{
 	}
 	
 	public Project get_Pj(int pj_num) {		
-		String sql = "SELECT * FROM project WHERE pj_num=" + pj_num;
+		String sql = "SELECT * FROM project WHERE pj_num=?";
 		Project pj = new Project();
 		
 		try {			
 			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, pj_num);
 			ResultSet rs = pstm.executeQuery();
 			
 			rs.next();			
@@ -104,10 +107,11 @@ public class Project_DAO extends DAO{
 	
 	public ArrayList<Project> get_my_Pj(String user){		
 		ArrayList<Project> datas = new ArrayList<Project>();
-		String sql = "SELECT * FROM project WHERE owner=" + user;
+		String sql = "SELECT * FROM project WHERE owner=?";
 		
 		try {			
 			pstm = con.prepareStatement(sql);
+			pstm.setString(1, user);
 			ResultSet rs = pstm.executeQuery();
 			
 			while (rs.next()) {
