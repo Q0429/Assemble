@@ -1,6 +1,9 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.q0429.model.Link"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" errorPage="assemble_error.jsp"%>
 <jsp:useBean id="pj" scope="request" class="com.q0429.model.Project" />
+<jsp:useBean id="datas_ln" scope="request" class="java.util.ArrayList" />
 <!DOCTYPE HTML>
 <!--
 	Forty by HTML5 UP
@@ -52,9 +55,48 @@
 							<label for="name">DETAIL</label>
 							<textarea rows="8" cols="40" name="detail" maxlength="50"
 								readonly="readonly"><%=pj.getDetail()%></textarea>
-						</div>						
+						</div>
 					</div>
-					<input type="button" onClick="location.href='create_ln.jsp?pj_num=<%=pj.getPj_num()%>'" value="모집" />
+
+				</div>
+				<input type="button"
+					onClick="location.href='create_ln.jsp?pj_num=<%=pj.getPj_num()%>'"
+					value="모집" />
+				<div>
+				<h1>참여자들</h1>
+							<table class="alt">
+								<thead>
+									<tr>
+										<th>No.</th>
+										<th>이름</th>
+										<th>REQUIRE</th>
+										<th>참가자</th>
+									</tr>
+								</thead>
+								<tbody>
+									<%
+										int idx = 1;
+										for (Link ln : (ArrayList<Link>) datas_ln) {				
+											
+									%>
+									<tr>
+										<td><%=idx%></td>
+										<td><%=pj.getName()%></td>
+										<td><%=ln.getRequire()%></td>
+										<%if(ln.getId() != null) {%>
+										<th><%=ln.getId() %></th>
+										<%} else { %>
+										<th>미정</th>
+										<%} %>
+									</tr>
+									<%
+										idx++;
+										}
+									%>
+
+								</tbody>
+							</table>
+				
 				</div>
 			</section>
 		</div>

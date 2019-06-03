@@ -14,9 +14,10 @@ public class Create_ln implements Command {
 		// TODO Auto-generated method stub
 		Link ln = new Link();
 		Link_DAO dao = new Link_DAO();
-		
-		
-		return false;
+		ln.setPj_num(Integer.parseInt(request.getParameter("pj_num")));
+		ln.setRequire(request.getParameter("require"));
+		dao.insert_Ln(ln);		
+		return true;
 	}
 
 }

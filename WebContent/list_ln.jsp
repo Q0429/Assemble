@@ -3,8 +3,10 @@
 <%@page import="com.q0429.model.Link"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" errorPage="assemble_error.jsp"%>
-	<jsp:useBean id="datas" scope="request" class="java.util.ArrayList" />
-	<jsp:useBean id="datas_pj" scope="request" class="java.util.ArrayList"></jsp:useBean>
+<jsp:useBean id="datas" scope="request" class="java.util.ArrayList" />
+<jsp:useBean id="datas_pj" scope="request" class="java.util.ArrayList"></jsp:useBean>
+
+
 <!DOCTYPE HTML>
 <!--
 	Forty by HTML5 UP
@@ -29,7 +31,7 @@
 
 		<jsp:include page="header.jsp"></jsp:include>
 
-		
+
 
 		<!-- Main -->
 		<div id="main" class="alt">
@@ -54,6 +56,7 @@
 							<table class="alt">
 								<thead>
 									<tr>
+										<th>No.</th>
 										<th>이름</th>
 										<th>OWNER</th>
 										<th>DEADLINE</th>
@@ -64,8 +67,8 @@
 									<%
 										int idx = 1;
 										for (int i = 0; i < datas.size(); i++) {
-											Link ln = (Link)datas.get(i);
-											Project pj = (Project)datas_pj.get(i);
+											Link ln = (Link) datas.get(i);
+											Project pj = (Project) datas_pj.get(i);
 									%>
 									<tr>
 										<td><%=idx%></td>
@@ -73,9 +76,29 @@
 										<td><%=pj.getOwner()%></td>
 										<td><%=pj.getDeadline()%></td>
 										<td><%=ln.getRequire()%></td>
+										<td>
+											<%												
+													String now_user;
+													now_user = (String) session.getAttribute("sign_in_user");
+													if (now_user == null) {
+											%> <input type="button"
+											onclick="location.href='sign_in.jsp'"
+											class="button small fit" value="참가">
+										</td>
 									</tr>
+
 									<%
-										idx++;
+										} else {
+									%>
+									<input type="button"
+										onclick="location.href='Link_controller?action=link_user&id=<%=session.getAttribute("sign_in_user")%>&ln_num=<%=ln.getLink_num() %>'"
+										class="button small fit" value="참가">
+									</td>
+									</tr>
+
+									<%
+										}
+											idx++;
 										}
 									%>
 
@@ -84,6 +107,6 @@
 						</div>
 					</div>
 
-		<jsp:include page="footer.jsp"></jsp:include>
+					<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

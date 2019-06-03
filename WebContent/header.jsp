@@ -36,9 +36,9 @@
 	<ul class="links">
 		<li><a href="index.jsp">Home</a></li>
 		<%if(sign_in_user != null){ %>
-		<li><a href="">프로젝트 생성</a></li>
+		<li><a href="create_pj.jsp">프로젝트 생성</a></li>
 		<%}%>
-		<li><a href="">프로젝트 참가</a></li>
+		<li><a href="Link_controller?action=list_null">프로젝트 참가</a></li>
 		<%if(sign_in_user != null){ %>
 		<li><a href="User_controller?action=my_info&id=<%=sign_in_user%>">프로젝트 관리</a></li>
 		<%}%>

@@ -41,7 +41,7 @@
 		<section id="contact">
 			<div class="inner">
 
-				<form method="post" action="Project_controller">
+				<form method="post" action="Link_controller">
 					<input type=hidden name="action" value="create_ln">
 					<input type="hidden" name="pj_num" value="<%=request.getParameter("pj_num")%>"> 
 					<div class="fields">

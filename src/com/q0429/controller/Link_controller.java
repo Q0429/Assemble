@@ -44,14 +44,19 @@ public class Link_controller extends HttpServlet {
 		if(action.equals("create_ln")) {
 			command = new Create_ln();
 			if(command.execute(request, response)) {				
-				viewPage = "User_controller?action=my_info&id=" + session.getAttribute("sign_in_user");
+				viewPage = "Project_controller?action=get_pj&pj_num=" + request.getParameter("pj_num");
 			} else {
 				throw new ServletException("링크 생성 오류");
 			} 
 		} else if(action.equals("list_null")) {
-			
-		} else if(action.equals("get_list")) {
-			
+			command = new List_null();
+			command.execute(request, response);
+			viewPage = "list_ln.jsp";			
+		} else if(action.equals("link_user")) {
+			System.out.println("링크연결할 id : " + request.getParameter("id"));
+			command = new Link_user();
+			command.execute(request, response);
+			viewPage = "User_controller?action=my_info&id=" + request.getParameter("id");
 		} 
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
