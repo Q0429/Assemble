@@ -49,7 +49,7 @@
 						<div class="field">
 							<label for="name">ID</label>
 							 <input type="text" name="id" id="name" value="<%=user.getId()%>"/>
-							 <input type="button" onclick="double_chk()" value="중복 체크" />
+							 <!-- <input type="button" onclick="double_chk()" value="중복 체크" /> -->
 						</div>
 						<div class="field">
 							<label for="name">PW</label> <input type="password" name="pw"
@@ -70,7 +70,7 @@
 					</div>
 					<ul class="actions">
 						<li><input type="submit" value="SIGN UP" class="primary" /></li>
-						<li><input type="button" onClick="location.href='../index.jsp'"
+						<li><input type="button" onClick="location.href='index.jsp'"
 							value="BACK" /></li>
 					</ul>
 				</form>

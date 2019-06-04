@@ -49,7 +49,7 @@
 								id="name" />
 						</div>
 						<div class="field">
-							<label for="name">PW</label> <input type="text" name="pw"
+							<label for="name">PW</label> <input type="password" name="pw"
 								id="name" />
 						</div>
 					</div>
